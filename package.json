@@ -1,0 +1,25 @@
+{
+  "name": "8bits-discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint src/**"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^6.2.0",
+    "node-fetch": "^2.6.0",
+    "node-tweet-stream": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-plugin-node": "^8.0.1",
+    "nodemon": "^1.18.10"
+  }
+}

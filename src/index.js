@@ -1,0 +1,26 @@
+require("dotenv").config();
+const Discord = require("discord.js")
+
+const { watchTwitter } = require("./lib/tweets");
+
+const startBot = () => {
+  const client = new Discord.Client()
+
+  /* eslint-disable no-console */
+  client.on("ready", () => console.log(`Logged in as ${client.user.tag}!`));
+
+  //createWelcome(client);
+  //createCommands(client);
+
+  watchTwitter(client);
+
+  client.login(process.env.BOT_TOKEN);
+  client.on("error", e => {
+    console.log("Unexpected error", e);
+    client.destroy();
+
+    startBot();
+  });
+}
+
+startBot();
