@@ -1,3 +1,5 @@
+const { getChannelByName } = require("../utils")
+
 const Twitter = require('node-tweet-stream')
   , t = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -8,15 +10,16 @@ const Twitter = require('node-tweet-stream')
 
 const watchTwitter = client => {
   t.on('tweet', function (tweet) {
-    console.log('tweet received', tweet)
+    const channel = getChannelByName("tweets", client);
+    const link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+    channel.send(link);
   })
 
   t.on('error', function (err) {
     console.log(err)
   });
 
-  // TODO change to #8bitstoinfinity
-  t.track('#gamedev')
+  t.track('#8bitstoinfinity')
 }
 
 module.exports = { watchTwitter };
