@@ -10,7 +10,7 @@ const Twitter = require('node-tweet-stream')
 
 const watchTwitter = client => {
   t.on('tweet', function (tweet) {
-    const channel = getChannelByName("tweets", client);
+    const channel = getChannelByName("8-bits-to-∞-tweets", client);
     const link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
     channel.send(link);
   })
